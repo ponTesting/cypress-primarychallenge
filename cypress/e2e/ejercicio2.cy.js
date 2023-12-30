@@ -9,14 +9,20 @@ describe('Ejercicio 2', () => {
     });
   });
   it('Celulares y Smartphones', () => {
+    // Ingresar categoria comun
     let r;
     cy.visit('/');
     homePage.hoverCategorias();
-    homePage.hoverCategoryList(datos.categorias.cat1);
-    homePage.clickCategory(datos.categorias.cat3);
+    homePage.clickViewMoreCategories();
+    homePage.clickCategory(datos.categorias.cat2);
     cy.get("[class='seo-ui-trends-entry-keyword']")
       .eq(1)
       .click({ force: true });
+    // Filtrar Capital Federal
+    cy.get(
+      ':nth-child(8) > ul > :nth-child(1) > .ui-search-link > .ui-search-filter-name'
+    ).click();
+    // Obtener titulo de una publicacion
     cy.get('.ui-search-item__title')
       .its('length')
       .then((n) => {
@@ -25,8 +31,10 @@ describe('Ejercicio 2', () => {
           .eq(r)
           .invoke('text')
           .then((texto) => {
-            cy.get('.ui-search-item__title').eq(r).click();
-            const newText = texto.trim();
+            // Ingresar a la misma publicacion
+            cy.get('.ui-search-item__title').eq(r).click({ force: true });
+            const newText = texto;
+            // Validar que el titulo coincida con el titulo de la lista anterior
             cy.get('.ui-pdp-title').should('have.text', newText);
           });
       });

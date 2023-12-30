@@ -12,4 +12,7 @@ export class HomePage {
   clickCategory(categoria) {
     cy.contains('a', categoria).click();
   }
+  clickViewMoreCategories() {
+    cy.contains('Ver más categorías').click();
+  }
 }

@@ -2,6 +2,10 @@
   "categorias": {
     "cat1": "Tecnología",
     "cat2": "Componentes de PC",
-    "cat3": "Celulares y Smartphones"
+    "cat3": "Celulares y Smartphones",
+    "cat4": "Climatización",
+    "cat5": "Perfumes",
+    "cat6": "Textil y Calzado",
+    "cat7": "Cuarto del Bebé"
   }
 }
